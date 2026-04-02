@@ -18,11 +18,11 @@ tank ! (for {self.name})")
     def check_garden_error(self) -> None:
         try:
             self.check_plant_error()
-        except PlantError as e:
+        except GardenError as e:
             print(f"Caught GardenError : {e}")
         try:
             self.check_water_error()
-        except WaterError as e:
+        except GardenError as e:
             print(f"Caught GardenError : {e}")
 
 
@@ -42,22 +42,22 @@ class WaterError(GardenError):
 
 
 if __name__ == "__main__":
-    print(" === Custon Garden Errors Demo === \n")
+    print(" === Custom Garden Errors Demo === ")
     Rose = Plant("Rose", True, 3)
 
-    print("Testing PlantError ...")
+    print("\nTesting PlantError ...")
     try:
         Rose.check_plant_error()
     except PlantError as e:
         print(f"Caught PlantError : {e}")
 
-    print("Testing WaterError ...")
+    print("\nTesting WaterError ...")
     try:
         Rose.check_water_error()
     except WaterError as e:
         print(f"Caught WaterError : {e}")
 
-    print("Testing catching all garden errors ...")
+    print("\nTesting catching all garden errors ...")
     Rose.check_garden_error()
 
     print("\nAll custom error types work correctly !")
