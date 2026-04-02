@@ -1,12 +1,13 @@
 #!usr/bin/env python3
 
 class Plant:
-    all_plants = []
+    all_plants: list = []
 
     def __init__(self, plant_name: str):
         self.plant_name = plant_name
         Plant.all_plants.append(self)
 
+    @staticmethod
     def water_plant(plant_name: str) -> None:
         if plant_name == plant_name.capitalize():
             print(f"Watering {plant_name} : [OK]")

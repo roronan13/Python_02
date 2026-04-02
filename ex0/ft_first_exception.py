@@ -14,9 +14,9 @@ def test_temperature() -> None:
         print(f"Caught input_temperature error : invalid literal for int() \
 with base 10: '{temp_str}'")
 
-    temp_str: str = "abc"
+    temp_str = "abc"
     try:
-        temp_int: int = input_temperature(temp_str)
+        temp_int = input_temperature(temp_str)
         print(f"Temperature is now {temp_int}°C")
     except ValueError:
         print(f"Caught input_temperature error : invalid literal for int() \
