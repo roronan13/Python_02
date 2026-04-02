@@ -7,23 +7,25 @@ class Plant:
         self.plant_name = plant_name
         Plant.all_plants.append(self)
 
-    def water_plant(self, plant_name: str) -> None:
-        if str.capitalize(plant_name):
-            print(f"Watering {self.plant_name} : [OK]")
+    def water_plant(plant_name: str) -> None:
+        if plant_name == plant_name.capitalize():
+            print(f"Watering {plant_name} : [OK]")
         else:
             raise PlantError(f"Caught PlantError : Invalid plant name to \
-water : '{self.plant_name}'")
+water : '{plant_name}'")
 
+    @staticmethod
     def test_watering_system() -> None:
-        print("Opening water system")
-        for plant in Plant.all_plants:
-            try:
+        print("Opening watering system")
+        try:
+            for plant in Plant.all_plants:
                 Plant.water_plant(plant.plant_name)
-            except PlantError as e:
-                print(f"{e}")
-                print("... ending tests and returning to main")
-            finally:
-                print("Closing watering system")
+        except PlantError as e:
+            print(f"{e}")
+            print("... ending tests and returning to main")
+            return
+        finally:
+            print("Closing watering system")
 
 
 class PlantError(Exception):
@@ -40,9 +42,9 @@ if __name__ == "__main__":
     tomato = Plant("Tomato")
     Plant.test_watering_system()
 
-    print("Testing invalid plants ...")
+    print("\nTesting invalid plants ...")
     lettuce = Plant("lettuce")
     carrots = Plant("Carrots")
     Plant.test_watering_system()
 
-    print("Cleanup always happen, even with errors !")
+    print("\nCleanup always happen, even with errors !")
